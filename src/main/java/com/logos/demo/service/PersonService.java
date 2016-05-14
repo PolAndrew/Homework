@@ -9,5 +9,8 @@ public interface PersonService {
 	List<Person> getAll();
 	
 	void save(Person person);
-
+	
+	Person findbyID(long id);
+	
+    Person findByName(String name);
 }

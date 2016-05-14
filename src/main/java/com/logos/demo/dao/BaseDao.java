@@ -13,5 +13,7 @@ public interface BaseDao<E, N extends Number> {
 	E update(E entity);
 
 	List<E> findAll();
+	
+	
 
 }

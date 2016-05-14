@@ -1,10 +1,14 @@
 package com.logos.demo.controller;
 
+import java.security.Principal;
+
 import javax.inject.Inject;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,5 +38,23 @@ public class UserController {
 		return "redirect:/users";
 	}
 	
+	@RequestMapping(value = "/mypage")
+	public String open(Model model, Principal principal) {
+	
+		model.addAttribute("person", personService.findbyID(Long.parseLong(principal.getName())));
+		
+		return "mypage";
+	}
+	
+	@RequestMapping(value = "/{id}")
+	public String findById(Model model, @PathVariable long id){
+		model.addAttribute("person", personService.findbyID(id));
+		return "mypage";
+	}
+	@RequestMapping(value = "/name/{name}")
+	public String findByname(Model model, @PathVariable String name ){
+		model.addAttribute("person", personService.findByName(name));
+		return "mypage";
+	}
 
 }

@@ -7,9 +7,13 @@
 
 <div class="internal-buttons">
 	<ul class="nav nav-sidebar">
-		<li><a href="home">Home</a></li>
+		<li><a href="${context}/home">Home</a></li>
+		<li><a href="${context}/Registration">Registration</a></li>
 		<sec:authorize access="hasRole('ROLE_USER')">
 			<li><a href="${context}/users">Users</a></li>
+		</sec:authorize>
+		<sec:authorize access="hasRole('ROLE_USER')">
+			<li><a href="${context}/users/mypage">Mypage</a></li>
 		</sec:authorize>
 	</ul>
 </div>

@@ -11,12 +11,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.logos.demo.dao.BaseDao;
 
+
 public abstract class BaseDaoImpl<E, N extends Number> implements BaseDao<E, N> {
 
 	private Class<E> entityClass;
 
 	public BaseDaoImpl(Class<E> entityClass) {
+		
 		this.entityClass = entityClass;
+		
 	}
 
 	@PersistenceContext(name = "logos")
@@ -28,6 +31,17 @@ public abstract class BaseDaoImpl<E, N extends Number> implements BaseDao<E, N> 
 		try {
 			Query query = entityManager.createQuery("from " + entityClass.getSimpleName() + " e where e.id = :id");
 			query.setParameter("id", id);
+			return (E) query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public E findByName(String name) {
+		try {
+			Query query = entityManager.createQuery("from " + entityClass.getSimpleName() + " e where e.name = :name");
+			query.setParameter("name", name);
 			return (E) query.getSingleResult();
 		} catch (NoResultException e) {
 			return null;

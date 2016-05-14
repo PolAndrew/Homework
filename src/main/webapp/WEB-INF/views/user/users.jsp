@@ -17,13 +17,12 @@
 	</c:forEach>
 
 
+</table>
+
 	<form action="${context}/users/save" method="POST">
 		<label>Name</label> <input name="name" type="text">
 		<button type="submit">OK</button>
 	</form>
-</table>
-
-
 
 
 
