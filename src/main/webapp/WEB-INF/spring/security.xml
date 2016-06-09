@@ -10,11 +10,13 @@
 
 	<http auto-config="true" use-expressions="true">
 		<form-login authentication-failure-url="/users"
+			
 			login-processing-url="/login_user" password-parameter="password"
 			username-parameter="email" default-target-url="/home" login-page="/home" />
 	</http>
 
 	<beans:bean id="userDetailsService" class="com.logos.demo.service.impl.UserDetailsServiceImpl" />
+	
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">

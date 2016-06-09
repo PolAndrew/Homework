@@ -8,12 +8,17 @@
 <div class="internal-buttons">
 	<ul class="nav nav-sidebar">
 		<li><a href="${context}/home">Home</a></li>
-		<li><a href="${context}/Registration">Registration</a></li>
+		<sec:authorize access="isAnonymous()">
+		<li><a href="${context}/registration">registration</a></li>
+		</sec:authorize>
 		<sec:authorize access="hasRole('ROLE_USER')">
 			<li><a href="${context}/users">Users</a></li>
 		</sec:authorize>
 		<sec:authorize access="hasRole('ROLE_USER')">
 			<li><a href="${context}/users/mypage">Mypage</a></li>
+		</sec:authorize>
+		<sec:authorize access="hasRole('ROLE_USER')">
+			<li><a href="${context}/city">city</a></li>
 		</sec:authorize>
 	</ul>
 </div>

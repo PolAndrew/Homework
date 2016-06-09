@@ -4,7 +4,7 @@
 <%@ page session="false"%>
 <div class="header">
 	<div class="title">
-		<h3>LOGOS DEMO</h3>
+		<h3>MY WORK</h3>
 	</div>
 </div>
 

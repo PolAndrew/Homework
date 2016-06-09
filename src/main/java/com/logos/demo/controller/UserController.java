@@ -22,6 +22,8 @@ public class UserController {
 
 	@Inject
 	private PersonService personService;
+	
+	
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String getAll(Model model, HttpServletRequest request) {
